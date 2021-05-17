@@ -27,3 +27,6 @@ export 'package:sp_util/sp_util.dart';
 
 /// 轮播图
 export 'package:flutter_swiper/flutter_swiper.dart';
+
+//
+export 'package:transparent_image/transparent_image.dart';

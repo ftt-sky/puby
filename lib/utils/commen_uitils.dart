@@ -121,6 +121,10 @@ class TextStyleMacor {
   // 设置字体
   static TextStyle configtextstyle(double fontsiz, Color color,
       {FontWeight font: FontWeight.normal}) {
-    return TextStyle(fontSize: fontsiz, color: color, fontWeight: font);
+    return TextStyle(
+        fontSize: fontsiz,
+        color: color,
+        fontWeight: font,
+        fontFamily: 'SourceHanSans');
   }
 }

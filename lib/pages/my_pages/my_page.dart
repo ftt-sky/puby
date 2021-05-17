@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:puby/pages/my_pages/my_sliver_delegate.dart';
 import 'package:puby/puby_page.dart';
 import 'package:puby/tool_index.dart';
 import 'package:puby/widegts/curretn_widget.dart';
@@ -16,6 +17,8 @@ class MyPage extends StatefulWidget {
 
 class MyPageState extends State<MyPage> {
   var _userId;
+  final GlobalKey textKey = GlobalKey();
+  Rect textsize = Rect.fromLTRB(10, 0, 10, 0);
   @override
   Widget build(BuildContext context) {
     if (Utils.isLogin()) {
@@ -27,7 +30,7 @@ class MyPageState extends State<MyPage> {
   Widget buildScaffold(BuildContext context) {
     return Scaffold(
         backgroundColor: ColorsMacro.col_F7F,
-        body: buildCustomScrollview(context));
+        body: buildNestedScrllView(context, ProfileState.initial()));
   }
 
   Widget buildConsumer(BuildContext context) {
@@ -48,16 +51,27 @@ class MyPageState extends State<MyPage> {
         );
       }
 
-      return buildNestedScrllView(context);
+      return buildNestedScrllView(context, profileState);
     });
   }
 
-  Widget buildNestedScrllView(BuildContext context) {
+  Widget buildNestedScrllView(BuildContext context, ProfileState profileState) {
     return NestedScrollView(
       floatHeaderSlivers: false,
       body: buildCustomScrollview(context),
       // ignore: missing_return
-      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {},
+      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+        return <Widget>[
+          SliverOverlapAbsorber(
+            handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+            sliver: SliverPersistentHeader(
+              delegate: MySliverDelegate(
+                  context, _userId, textKey, textsize, profileState, false),
+              pinned: true,
+            ),
+          )
+        ];
+      },
     );
   }
 
@@ -66,14 +80,9 @@ class MyPageState extends State<MyPage> {
     return Builder(builder: (context) {
       return CustomScrollView(
         slivers: [
-          // SliverPadding(
-          //     padding: EdgeInsets.only(top: 0),
-          //     sliver: SliverList(
-          //         delegate: SliverChildBuilderDelegate(
-          //             (BuildContext context, int index) {
-          //       UserItem item = UserListData.firstItem()[index];
-          //       return buildItemWidget(item.icon, item.name);
-          //     }, childCount: UserListData.firstItem().length))),
+          SliverOverlapInjector(
+            handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+          ),
           buildSliverFixedExtenList(UserListData.firstItem()),
           SliverPadding(padding: EdgeInsets.all(5)),
           buildSliverFixedExtenList(UserListData.secondItem()),

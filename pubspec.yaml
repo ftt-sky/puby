@@ -60,6 +60,8 @@ dependencies:
   toast: ^0.1.5
   lottie: ^1.0.1
 
+  transparent_image: ^1.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
