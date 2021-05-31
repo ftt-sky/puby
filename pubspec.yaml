@@ -56,6 +56,8 @@ dependencies:
   keyboard_avoider: ^0.1.2
   # 适配屏幕尺寸
   flutter_screenutil: ^4.0.3+1
+  # 视频播放器
+  better_player: ^0.0.68
   # 弹框
   toast: ^0.1.5
   lottie: ^1.0.1
@@ -90,11 +92,24 @@ flutter:
     - assets/images/jiangping.png
     - assets/images/kefu.png
     - assets/images/renzheng.png
+    - assets/images/sousuo.png
     - assets/images/shezhi.png
     - assets/images/shoucang.png
+    - assets/images/kaifang.png
+    - assets/images/lisichufang.png
+    - assets/images/shouyao.png
+    - assets/images/xiedingchufang.png
+    - assets/images/caigouitem.png
+    - assets/images/gongyingshang.png
+    - assets/images/liliao.png
+    - assets/images/pancun.png
+    - assets/images/ruku.png
+    - assets/images/shouyin.png
+    - assets/images/yaofang.png
     - assets/images/yijianfankui.png
     - assets/images/pingtaidingdan.png
     - assets/images/xueyuan.png
+    - assets/images/xiaoxi.png
     - assets/json/empty.json
     - assets/json/disconnect.json
     - assets/json/error.json
@@ -104,9 +119,28 @@ flutter:
     - assets/json/error2.json
     - assets/json/empty2.json
     - assets/json/empty3.json
+    - assets/images/animationImage.gif
 
 
-
+fonts:
+  - family: FZDaLTJ
+    fonts:
+      - asset: assets/fonts/fzDaLTJ.ttf
+  - family: FZFWQingYinTiJWL
+    fonts:
+      - asset: assets/fonts/fzFWQingYinTiJWL.ttf
+  - family: FZFWZhuZiAYuanJWM
+    fonts:
+      - asset: assets/fonts/fzFWZhuZiAYuanJWM.ttf
+  - family: SourceHanSans
+    fonts:
+      - asset: assets/fonts/sourceHanSansMedium.ttc
+  - family: Rzzyt
+    fonts:
+      - asset: assets/fonts/rzzyt.ttf
+  - family: IconFont
+    fonts:
+       - asset: assets/fonts/iconfont.ttf
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

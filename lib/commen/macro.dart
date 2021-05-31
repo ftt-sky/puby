@@ -37,20 +37,53 @@ class ImageStringMacro {
   static const String yijianfankuiStr = 'yijianfankui';
   // 平台
   static const String pingtaidingdanStr = 'pingtaidingdan';
+  // 搜索
+  static const String sousuoStr = 'sousuo';
+  // 消息
+  static const String xiaoxiStr = 'xiaoxi';
+  // 开方
+  static const String kaifangStr = 'kaifang';
+  // 历史处方
+  static const String lisichufangStr = 'lisichufang';
+  // 售药
+  static const String shouyaoStr = 'shouyao';
+  // 协定处方
+  static const String xiedingchufangStr = 'xiedingchufang';
+  // 采购item
+  static const String caigouitemStr = 'caigouitem';
+  // 供应商
+  static const String gongyingshangStr = 'gongyingshang';
+  // 理疗
+  static const String liliaoStr = 'liliao';
+  // 盘存
+  static const String pancunStr = 'pancun';
+  // 入库
+  static const String rukuStr = 'ruku';
+  // 收银
+  static const String shouyinStr = 'shouyin';
+  // 药房
+  static const String yaofangStr = 'yaofang';
 }
 
 // 界面标识
 class PageIdMacro {
   // tabber
   static const String tabbarId = '/';
+
   // 学院
   static const String collegeId = '/college';
+  // 学院分类列表
+  static const String collegelistId = '/collegelist';
+
   // 登录页
   static const String loginId = '/login';
+
   // 个人中心
   static const String myId = '/my';
+
   // 患者
   static const String patientId = '/patient';
+
   // 工作台
   static const String purchaseId = '/purchase';
 }

@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/screenutil_init.dart';
+import 'package:puby/puby_page.dart';
 import 'package:puby/third_page.dart';
 import 'tabbar_page.dart';
 
@@ -45,8 +46,8 @@ class App extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-              primaryColor: Color.fromRGBO(163, 165, 239, 1),
-              accentColor: Color.fromRGBO(179, 160, 238, 1),
+              primaryColor: ColorsMacro.col_FFF,
+              accentColor: Colors.white,
               highlightColor: Color.fromRGBO(155, 168, 239, 1),
               splashColor: Colors.transparent,
               fontFamily: 'SourceHanSans'),

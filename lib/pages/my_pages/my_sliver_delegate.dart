@@ -51,17 +51,7 @@ class MySliverDelegate extends SliverPersistentHeaderDelegate {
                   color: Colors.red,
                   width: 60,
                   height: 60,
-                )
-
-                // ClipOval(
-                //     child: FadeInImage.memoryNetwork(
-                //   placeholder: kTransparentImage,
-                //   image: '',
-                //   fit: BoxFit.cover,
-                //   width: 36,
-                //   height: 36,
-                // )),
-                )),
+                ))),
         Positioned(
           top: imageTop + 10,
           left: textLeft,

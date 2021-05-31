@@ -35,6 +35,7 @@ class MyPageState extends State<MyPage> {
 
   Widget buildConsumer(BuildContext context) {
     return Consumer(builder: (context, watch, child) {
+      // ignore: invalid_use_of_protected_member
       final profileState = watch(profileProvider(_userId)).state;
       if (profileState.pageState == PageState.busyState ||
           profileState.pageState == PageState.initializedState) {

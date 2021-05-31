@@ -60,14 +60,6 @@ class ErrorPage extends StatelessWidget {
                   this.desc ?? '虽然什么也没有,要不刷新看看',
                   style: TextStyle(fontSize: 15, color: Colors.grey.shade400),
                 ),
-                // GestureDetector(
-                //   onTap: () => this.helpAction(),
-                //   child: Icon(
-                //     IconFont.icon_info,
-                //     size: 18,
-                //     color: Colors.grey,
-                //   ),
-                // ),
               ],
             ),
             !this.isEmptyPage
