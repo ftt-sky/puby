@@ -20,7 +20,7 @@ class PurchasePageRefresh extends StatelessWidget {
       },
       content: ListView.separated(
           itemBuilder: (context, index) {
-            return buildPurchaseItem();
+            return buildPurchaseItem(context);
           },
           separatorBuilder: (context, index) {
             return Container(height: 10, color: ColorsMacro.col_F7F);
@@ -30,16 +30,20 @@ class PurchasePageRefresh extends StatelessWidget {
   }
 
   // 创建item
-  Widget buildPurchaseItem() {
-    return Container(
-      height: 80,
-      padding: EdgeInsets.only(right: 10, left: 10),
-      color: ColorsMacro.col_FFF,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [buildImageAndTitle(), ImageIconMacro.arrowrightIcon],
-      ),
-    );
+  Widget buildPurchaseItem(BuildContext context) {
+    return GestureDetector(
+        onTap: () {
+          RouteManager.pushPage(context, PageIdMacro.purchaseitemId);
+        },
+        child: Container(
+          height: 80,
+          padding: EdgeInsets.only(right: 10, left: 10),
+          color: ColorsMacro.col_FFF,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [buildImageAndTitle(), ImageIconMacro.arrowrightIcon],
+          ),
+        ));
   }
 
   // 创建图片和文字

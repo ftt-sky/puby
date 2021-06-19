@@ -1,10 +1,6 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:puby/pages/college_pages/college_page.dart';
-import 'package:puby/pages/my_pages/my_page.dart';
-import 'package:puby/pages/patient_pages/patient_page.dart';
-import 'package:puby/pages/purchase_pages/purchase_page.dart';
-import 'package:puby/pages/workbench_pages/workbench_page.dart';
+import 'package:puby/puby_page.dart';
 import 'package:puby/utils/tabbar_data.dart';
 
 // 入口tabbar
@@ -51,20 +47,14 @@ class _RootAppBarState extends State<RootAppBar>
         child: Scaffold(
           body: TabBarView(
             controller: _tabController,
-            children: [
-              CollegePage(),
-              PatientPage(),
-              WorkBenchPage(),
-              PurchasePage(),
-              MyPage()
-            ],
+            children: TabbarData.widgetList(),
           ),
-          bottomNavigationBar: buildConvexAppBar(),
+          bottomNavigationBar: buildConvexAppBar(context),
         ));
   }
 
   //
-  Widget buildConvexAppBar() {
+  Widget buildConvexAppBar(BuildContext context) {
     return ConvexAppBar(
       items: _tabItmes,
       style: _style,
@@ -74,6 +64,16 @@ class _RootAppBarState extends State<RootAppBar>
       controller: _tabController,
       color: Colors.grey,
       activeColor: Colors.black,
+      onTabNotify: (index) {
+        bool islogin = Utils.isNeedLogin(TabbarData.widgeIdList[index]);
+        if (islogin) {
+          RouteManager.pushPage(
+            context,
+            PageIdMacro.loginId,
+          );
+        }
+        return !islogin;
+      },
       onTap: (index) {
         debugPrint('select index = $index');
       },

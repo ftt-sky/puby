@@ -11,7 +11,7 @@ export 'package:convert/convert.dart';
 export 'package:pull_to_refresh/pull_to_refresh.dart';
 
 /// 弹框
-export 'package:toast/toast.dart';
+export 'package:fluttertoast/fluttertoast.dart';
 
 /// 键盘
 export 'package:keyboard_avoider/keyboard_avoider.dart';
@@ -30,3 +30,6 @@ export 'package:flutter_swiper/flutter_swiper.dart';
 
 //
 export 'package:transparent_image/transparent_image.dart';
+
+// 设置手机权限 第三方库
+//export 'package:permission_handler/permission_handler.dart';

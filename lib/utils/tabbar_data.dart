@@ -1,4 +1,4 @@
-import 'dart:ffi';
+import 'dart:ui';
 
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
@@ -10,16 +10,42 @@ import 'commen_uitils.dart';
 import 'package:puby/models/model_index.dart';
 
 class CurrentData {
+  // 客服电话
+  static String kefuphone = "13811111111";
+  // 通用测试图片
   static String imageurl =
       'https://img2.woyaogexing.com/2020/03/10/e5cfaf077edb4d4e83465e27aae25795!1080x1920.jpeg';
   static List<String> currentImage = [imageurl, imageurl, imageurl];
+  // 通用测试视频地址
+  static String playerurl =
+      'http://vfx.mtime.cn/Video/2019/03/09/mp4/190309153658147087.mp4';
+  // 主题黄色
+  static Color thereColors = Color(0xFFFC8607);
+  // 绿色
+  static Color lvColors = Color(0xFF39c49a);
 
+  // 通用间隔
   Widget configlineSpace({double height = 1}) {
     return Container(height: height, color: ColorsMacro.col_F7F);
   }
 }
 
 class TabbarData {
+  static List<String> widgeIdList = [
+    PageIdMacro.collegeId,
+    PageIdMacro.patientId,
+    PageIdMacro.workbenchId,
+    PageIdMacro.purchaseId,
+    PageIdMacro.myId
+  ];
+  static List<Widget> widgetList() {
+    List<Widget> list = [];
+    for (var ids in widgeIdList) {
+      list.add(RouteManager.configCurrentWidget(ids));
+    }
+    return list;
+  }
+
   static const gradients = [
     null,
     LinearGradient(
@@ -84,32 +110,78 @@ class TabbarData {
 class UserListData {
   static List<UserItem> firstItem() {
     return [
-      UserItem('平台订单', Utils.getImagePath(ImageStringMacro.pingtaidingdanStr)),
-      UserItem('认证中心', Utils.getImagePath(ImageStringMacro.renzhengStr)),
+      UserItem('平台订单',
+          icon: Utils.getImagePath(ImageStringMacro.pingtaidingdanStr),
+          pageName: PageIdMacro.myodercenter),
+      UserItem('认证中心',
+          icon: Utils.getImagePath(ImageStringMacro.renzhengStr),
+          pageName: PageIdMacro.myauthentication),
     ];
   }
 
   static List<UserItem> secondItem() {
     return [
-      UserItem('我的收藏', Utils.getImagePath(ImageStringMacro.shoucangStr)),
-      UserItem('我的奖品', Utils.getImagePath(ImageStringMacro.jiangpingStr)),
-      UserItem('当前版本', Utils.getImagePath(ImageStringMacro.banbenStr)),
-      UserItem('奢者', Utils.getImagePath(ImageStringMacro.shezhiStr))
+      UserItem('我的收藏',
+          icon: Utils.getImagePath(ImageStringMacro.shoucangStr),
+          pageName: PageIdMacro.mycollection),
+      //serItem('我的奖品', Utils.getImagePath(ImageStringMacro.jiangpingStr),
+      //  pageName: PageIdMacro.myprize),
+      UserItem('当前版本',
+          icon: Utils.getImagePath(ImageStringMacro.banbenStr),
+          moreinfo: "1.0.0",
+          pageName: PageIdMacro.myversion),
+      UserItem('设置',
+          icon: Utils.getImagePath(ImageStringMacro.shezhiStr),
+          pageName: PageIdMacro.mysett)
     ];
   }
 
   static List<UserItem> thirdItem() {
     return [
-      UserItem('联系客服', Utils.getImagePath(ImageStringMacro.kefuStr)),
-      UserItem('意见反馈', Utils.getImagePath(ImageStringMacro.yijianfankuiStr))
+      UserItem('联系客服',
+          icon: Utils.getImagePath(ImageStringMacro.kefuStr),
+          pageName: PageIdMacro.mycostomer),
+      UserItem('意见反馈',
+          icon: Utils.getImagePath(ImageStringMacro.yijianfankuiStr),
+          pageName: PageIdMacro.myfeedback)
+    ];
+  }
+
+  // 认证
+  static List<UserItem> authenList() {
+    return [
+      UserItem('机构认证', pageName: PageIdMacro.myauthmech),
+      UserItem('医生认证', pageName: PageIdMacro.myauthdoctor),
+      UserItem('支付商户认证', pageName: PageIdMacro.myauthpay)
+    ];
+  }
+
+  // 设置
+  static List<UserItem> settList() {
+    return [
+      UserItem(
+        '修改密码',
+        pageName: PageIdMacro.mychangepassword,
+      ),
+      UserItem(
+        '版本更新',
+      ),
+      UserItem(
+        '切换账号',
+        pageName: PageIdMacro.mychangephone,
+      ),
+      UserItem('退出'),
+      UserItem('注销')
     ];
   }
 }
 
 class UserItem<T> {
-  const UserItem(this.name, this.icon, {this.moreinfo});
+  const UserItem(this.name, {this.icon, this.pageName = "", this.moreinfo});
   // 名字
   final String name;
+  // 界面标识
+  final String pageName;
   // 图片
   final T icon;
   // 更多信息
@@ -135,6 +207,12 @@ class ImageIconMacro {
     Utils.getImagePath(ImageStringMacro.sousuoStr),
     width: 18,
     height: 18,
+  );
+
+  static Image shipin = Image.asset(
+    Utils.getImagePath(ImageStringMacro.shipinStr),
+    width: 24,
+    height: 24,
   );
 
   // 开方
@@ -171,6 +249,44 @@ class ImageIconMacro {
   // 药房
   static Image yaofangImage =
       configminImage(Utils.getImagePath(ImageStringMacro.yaofangStr));
+  // 定位
+  static Image dingweiimage =
+      configminImage(Utils.getImagePath(ImageStringMacro.authdingweiStr));
+  // 医院
+  static Image yiyuanimage =
+      configminImage(Utils.getImagePath(ImageStringMacro.authyiyuanStr));
+  // 诊疗
+  static Image zhenliaoimage =
+      configminImage(Utils.getImagePath(ImageStringMacro.authzhenliaoStr));
+  // 选中
+  static Image xuanzhongimage =
+      configminImage(Utils.getImagePath(ImageStringMacro.xuanzhongStr));
+  // 未选中
+  static Image weixuanzhongimage =
+      configminImage(Utils.getImagePath(ImageStringMacro.weixuanzhongStr));
+  // 增加 黄色
+  static Image zengjianhuangseimage =
+      configminImage(Utils.getImagePath(ImageStringMacro.zengjiayStr));
+  // 增加 绿色
+  static Image zengjianlvseimage =
+      configminImage(Utils.getImagePath(ImageStringMacro.zengjiaStr));
+  // ➖
+  static Image jianimage =
+      configminImage(Utils.getImagePath(ImageStringMacro.jianStr));
+  // 删除
+  static Image delecteimage =
+      configminImage(Utils.getImagePath(ImageStringMacro.shanchuStr));
+
+  // 提交成功
+  static Image tijiaochenggongimage = Image.asset(
+      Utils.getImagePath(ImageStringMacro.tijiaochenggongStr),
+      width: 100,
+      height: 100);
+  // 上传图片
+  static Image jiaimage = Image.asset(
+      Utils.getImagePath(ImageStringMacro.jiaStr),
+      width: 100,
+      height: 100);
 
   // 获取40 * 40 图
   static Image configbigImage(String path) {

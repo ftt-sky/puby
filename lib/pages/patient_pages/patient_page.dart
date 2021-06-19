@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:puby/puby_page.dart';
 
 class PatientPage extends StatefulWidget {
   @override
@@ -10,6 +11,23 @@ class PatientPage extends StatefulWidget {
 class PatientPageState extends State<PatientPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return _buildScaffWidget();
+  }
+
+  /// 界面创建
+  ///
+  ///
+
+  Widget _buildScaffWidget() {
+    return Scaffold(
+      appBar: AppBar(title: Text('患者', style: TextStyleMacor.bold16Col333)),
+      body: _buildBody(),
+    );
+  }
+
+  Widget _buildBody() {
+    return Container(
+      color: ColorsMacro.getRandomColor(),
+    );
   }
 }

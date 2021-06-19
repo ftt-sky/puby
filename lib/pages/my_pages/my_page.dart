@@ -19,10 +19,11 @@ class MyPageState extends State<MyPage> {
   var _userId;
   final GlobalKey textKey = GlobalKey();
   Rect textsize = Rect.fromLTRB(10, 0, 10, 0);
+
   @override
   Widget build(BuildContext context) {
     if (Utils.isLogin()) {
-      _userId = SpUtil.getObject(StringMacro.userID)['id'];
+      //_userId = SpUtil.getObject(StringMacro.userID)['id'];
     }
     return buildScaffold(context);
   }
@@ -94,10 +95,19 @@ class MyPageState extends State<MyPage> {
     });
   }
 
-  Widget buildItemWidget(String icon, String title, {String moreinfo}) {
+  Widget buildItemWidget(String icon, String title, String pageName,
+      {String moreinfo}) {
     return Container(
         color: Colors.white,
         child: ListTile(
+          onTap: () {
+            if (pageName == PageIdMacro.mycostomer) {
+              configtellphone(context);
+            } else if (pageName == PageIdMacro.myversion) {
+            } else {
+              RouteManager.pushPage(context, pageName, data: title);
+            }
+          },
           dense: true,
           leading: Container(
             height: 25,
@@ -119,7 +129,7 @@ class MyPageState extends State<MyPage> {
     return SliverFixedExtentList(
       delegate: SliverChildBuilderDelegate((BuildContext context, num index) {
         UserItem item = items[index];
-        return buildItemWidget(item.icon, item.name);
+        return buildItemWidget(item.icon, item.name, item.pageName);
       }, childCount: items.length),
       itemExtent: 44,
     );

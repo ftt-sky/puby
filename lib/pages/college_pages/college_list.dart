@@ -40,7 +40,7 @@ class CollegeListWidgetState extends State<CollegeListWidget> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
         title: Text(
-          widget.name,
+          widget.name ?? "",
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -48,7 +48,7 @@ class CollegeListWidgetState extends State<CollegeListWidget> {
             color: Colors.white,
           ),
         ),
-        backgroundColor: Colors.orange.shade200,
+        backgroundColor: Colors.orange,
       ),
       body: buildChildWidget(),
     );
@@ -112,7 +112,7 @@ class CollegeListWidgetState extends State<CollegeListWidget> {
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: ColorsMacro.col_EEE, width: 1),
               borderRadius: BorderRadius.all(Radius.circular(5))),
-          hintText: '请输入名称/联系人/手机号',
+          hintText: widget.name == '我的收藏' ? '请输入搜索内容/关键字' : '请输入名称/联系人/手机号',
           hintStyle: TextStyleMacor.nor14col666,
           focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: ColorsMacro.col_EEE, width: 1),

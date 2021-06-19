@@ -15,26 +15,33 @@ class CollegeListRefresh extends StatelessWidget {
       onLoading: () {},
       onRefresh: () {},
       content: ListView.separated(
-          itemBuilder: (context, index) {
-            return buildlistItem();
-          },
-          separatorBuilder: (context, index) {
-            return CurrentData().configlineSpace();
-          },
-          controller: scrollController,
-          reverse: false,
-          itemCount: 50),
+        itemBuilder: (context, index) {
+          return buildlistItem(context);
+        },
+        separatorBuilder: (context, index) {
+          return CurrentData().configlineSpace();
+        },
+        controller: scrollController,
+        reverse: false,
+        itemCount: 50,
+      ),
     );
   }
 
-  Widget buildlistItem() {
-    return Container(
-      color: Colors.white,
-      padding: EdgeInsets.all(10),
-      child: Row(
-        children: [buildImageWidget(), Gaps.hGap10, _buildListItemInfo()],
-      ),
-    );
+  // 创建list item
+  Widget buildlistItem(BuildContext context) {
+    return GestureDetector(
+        onTap: () {
+          RouteManager.pushPage(context, PageIdMacro.collegeDetailId,
+              data: '今日');
+        },
+        child: Container(
+          color: Colors.white,
+          padding: EdgeInsets.all(10),
+          child: Row(
+            children: [buildImageWidget(), Gaps.hGap10, _buildListItemInfo()],
+          ),
+        ));
   }
 
   Widget buildImageWidget() {
@@ -49,8 +56,7 @@ class CollegeListRefresh extends StatelessWidget {
               width: imageW,
               height: imageW / 2,
               child: CacheImage(
-                url:
-                    'https://img2.woyaogexing.com/2020/03/10/e5cfaf077edb4d4e83465e27aae25795!1080x1920.jpeg',
+                url: CurrentData.imageurl,
                 borderRadius: BorderRadius.circular(5),
               )),
           Positioned(

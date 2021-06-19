@@ -1,0 +1,11 @@
+export 'my_page.dart';
+export 'my_authmech.dart';
+export 'my_authdoctor.dart';
+export 'my_authpay.dart';
+export 'my_authentication.dart';
+export 'my_collection.dart';
+export 'my_costomer.dart';
+export 'my_feedback.dart';
+export 'my_oreder.dart';
+export 'my_prize.dart';
+export 'my_sett.dart';

@@ -9,14 +9,6 @@ import 'tabbar_page.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    /// 设置状态栏图标和字体的颜色
-    /// Brightness.light 一般都是显示白色
-    /// Brightness.dart 一般都是显示黑色
-    SystemUiOverlayStyle style = SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarBrightness: Brightness.dark);
-
-    SystemChrome.setSystemUIOverlayStyle(style);
     return buildScreenUtilInit();
   }
 

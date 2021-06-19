@@ -1,10 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:puby/pages/college_pages/college_item.dart';
-import 'package:puby/pages/my_pages/my_page.dart';
 import 'package:puby/puby_page.dart';
-import 'package:puby/widegts/common_base_page.dart';
 
 class CollegePageRefresh extends StatelessWidget {
   final ScrollController scrollController;

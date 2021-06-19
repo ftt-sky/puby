@@ -85,7 +85,7 @@ Widget buildCollegeCell(BuildContext context) {
     child: Column(
       children: [
         buildCollegeitemMore(context),
-        buildCollegeItemGridView(),
+        buildCollegeItemGridView(context),
         Gaps.vGap10
       ],
     ),
@@ -106,8 +106,8 @@ Widget buildCollegeitemMore(BuildContext context) {
         ),
         TextButton(
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => CollegeListWidget(name: '今日')));
+              RouteManager.pushPage(context, PageIdMacro.collegelistId,
+                  data: '今日');
             },
             child: Row(
               children: [
@@ -124,7 +124,7 @@ Widget buildCollegeitemMore(BuildContext context) {
 }
 
 // 创建4宫格
-Widget buildCollegeItemGridView() {
+Widget buildCollegeItemGridView(BuildContext context) {
   return GridView(
     padding: EdgeInsets.only(left: 10, right: 10),
     shrinkWrap: true,
@@ -135,66 +135,70 @@ Widget buildCollegeItemGridView() {
         crossAxisSpacing: 10,
         childAspectRatio: 1.3),
     children: [
-      buildCollegeItemGridViewItem(),
-      buildCollegeItemGridViewItem(),
-      buildCollegeItemGridViewItem(),
-      buildCollegeItemGridViewItem(),
+      buildCollegeItemGridViewItem(context),
+      buildCollegeItemGridViewItem(context),
+      buildCollegeItemGridViewItem(context),
+      buildCollegeItemGridViewItem(context),
     ],
   );
 }
 
-Widget buildCollegeItemGridViewItem() {
+Widget buildCollegeItemGridViewItem(BuildContext context) {
   double itemW = (SizeMacro().screenWidth - 30) / 2.0;
   double itemH = itemW / 2;
-  return Container(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          width: itemW,
-          height: itemH,
-          child: Stack(
-            children: [
-              Container(
-                  width: itemW,
-                  height: itemH,
-                  child: CacheImage(
-                    url:
-                        'https://img2.woyaogexing.com/2020/03/10/e5cfaf077edb4d4e83465e27aae25795!1080x1920.jpeg',
-                    borderRadius: BorderRadius.circular(5),
-                  )),
-              Positioned(
-                  width: 40,
-                  height: 40,
-                  left: (itemW - 40) / 2,
-                  top: (itemH - 40) / 2,
-                  child: Icon(
-                    Icons.play_circle_fill_rounded,
-                    color: Colors.white,
-                  )),
-            ],
-          ),
-        ),
-        Gaps.vGap5,
-        Text(
-          '测试',
-          style: TextStyleMacor.nor12col333,
-        ),
-        Gaps.vGap5,
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  return GestureDetector(
+      onTap: () {
+        RouteManager.pushPage(context, PageIdMacro.collegeDetailId, data: '今日');
+      },
+      child: Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              '免费',
-              style: TextStyleMacor.nor14col333,
+            Container(
+              width: itemW,
+              height: itemH,
+              child: Stack(
+                children: [
+                  Container(
+                      width: itemW,
+                      height: itemH,
+                      child: CacheImage(
+                        url: CurrentData.imageurl,
+                        borderRadius: BorderRadius.circular(5),
+                      )),
+                  Positioned(
+                      width: 40,
+                      height: 40,
+                      left: (itemW - 40) / 2,
+                      top: (itemH - 40) / 2,
+                      child: Icon(
+                        Icons.play_circle_fill_rounded,
+                        color: Colors.white,
+                      )),
+                ],
+              ),
             ),
+            Gaps.vGap5,
             Text(
-              '共75集',
-              style: TextStyleMacor.nor14col666,
+              '测试',
+              style: TextStyleMacor.nor12col333,
+            ),
+            Gaps.vGap5,
+            Expanded(child: child)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  '免费',
+                  style: TextStyleMacor.nor14col333,
+                ),
+                Text(
+                  '共75集',
+                  style: TextStyleMacor.nor14col666,
+                )
+              ],
             )
           ],
-        )
-      ],
-    ),
-  );
+        ),
+      ));
 }

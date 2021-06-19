@@ -59,10 +59,17 @@ dependencies:
   # 视频播放器
   better_player: ^0.0.68
   # 弹框
-  toast: ^0.1.5
+  fluttertoast: ^8.0.7
+  # 加载字体和动画
   lottie: ^1.0.1
+  # web 
+  flutter_webview_plugin: ^0.3.10+2
 
   transparent_image: ^1.0.0
+  # 获取手机权限
+  #permission_handler: ^8.0.1
+  # 打电话 
+  #url_launcher: ^6.0.6
 
 dev_dependencies:
   flutter_test:
@@ -95,6 +102,7 @@ flutter:
     - assets/images/sousuo.png
     - assets/images/shezhi.png
     - assets/images/shoucang.png
+    - assets/images/shipin.png
     - assets/images/kaifang.png
     - assets/images/lisichufang.png
     - assets/images/shouyao.png
@@ -106,7 +114,18 @@ flutter:
     - assets/images/ruku.png
     - assets/images/shouyin.png
     - assets/images/yaofang.png
+    - assets/images/auth_dingwei.png
+    - assets/images/auth_yiyuan.png
+    - assets/images/auth_zhenliao.png
     - assets/images/yijianfankui.png
+    - assets/images/zengjia.png
+    - assets/images/zengjiay.png
+    - assets/images/shanchu.png
+    - assets/images/jian.png
+    - assets/images/jia.png
+    - assets/images/chenggong.png
+    - assets/images/xuanzhong.png
+    - assets/images/weixuanzhong.png
     - assets/images/pingtaidingdan.png
     - assets/images/xueyuan.png
     - assets/images/xiaoxi.png

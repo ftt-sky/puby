@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:puby/pages/root_pages/app.dart';
+import 'puby_page.dart';
 
 void main() {
-  runApp(MyApp());
+  Global.init(() {
+    runApp(MyApp());
+  });
 }
 
 class MyApp extends StatefulWidget {
