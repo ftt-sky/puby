@@ -27,6 +27,8 @@ class ImageStringMacro {
   // 加载动画
   static const String loadingStr = 'assets/json/loading2.json';
 
+  static const String chengshiStr = 'assets/json/china.json';
+
   // 版本
   static const String banbenStr = 'banben';
   // 奖品
@@ -93,6 +95,14 @@ class ImageStringMacro {
   static const String jianStr = 'jian';
   // 删除
   static const String shanchuStr = 'shanchu';
+  // 医药箱
+  static const String yiyaoxiangStr = 'yiyaoxiang';
+  // 供应商
+  static const String gyingshangStr = 'gyingshang';
+  // 厂商
+  static const String cangshangStr = 'cangshang';
+  // 药材类型
+  static const String yaocaileixingStr = 'yaocaileixing';
 }
 
 // 界面标识

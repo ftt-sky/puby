@@ -35,6 +35,7 @@ class _LoginPageState extends State<LoginPage> {
     }
     SpUtil.putString(StringMacro.userID, _userID);
     SpUtil.putString(StringMacro.passwordID, _password);
+    Navigator.pop(context);
     LogUtil.d('密码$_password,账号$_userID');
   }
 

@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/screenutil_init.dart';
+
 import 'package:puby/puby_page.dart';
 import 'package:puby/third_page.dart';
 import 'tabbar_page.dart';

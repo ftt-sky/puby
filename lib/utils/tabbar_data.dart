@@ -28,6 +28,18 @@ class CurrentData {
   Widget configlineSpace({double height = 1}) {
     return Container(height: height, color: ColorsMacro.col_F7F);
   }
+
+  // 药材类型
+  static List yaocaileixinglist = ['中药颗粒袋装', '中药颗粒瓶装', '中西成药', '中药饮片'];
+
+  static List gongyingshanglist = ['文宗堂团队', '文宗堂团队2', '文宗堂团队3', '文宗堂团队4'];
+
+  static List changshangshuaixuanlist = [
+    '哈尔冰珍宝岛',
+    '哈尔冰珍宝岛2',
+    '哈尔冰珍宝岛3',
+    '哈尔冰珍宝岛4'
+  ];
 }
 
 class TabbarData {
@@ -276,6 +288,18 @@ class ImageIconMacro {
   // 删除
   static Image delecteimage =
       configminImage(Utils.getImagePath(ImageStringMacro.shanchuStr));
+  // 医药箱
+  static Image yiyaoxiangimage =
+      configbigImage(Utils.getImagePath(ImageStringMacro.yiyaoxiangStr));
+  // 供应商
+  static Image gongyingshangitemImage =
+      configminImage(Utils.getImagePath(ImageStringMacro.gyingshangStr));
+  // 厂商
+  static Image cangshangImage =
+      configminImage(Utils.getImagePath(ImageStringMacro.cangshangStr));
+  // 药材类型
+  static Image yaocaileixingImage =
+      configminImage(Utils.getImagePath(ImageStringMacro.yaocaileixingStr));
 
   // 提交成功
   static Image tijiaochenggongimage = Image.asset(

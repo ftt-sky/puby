@@ -1,8 +1,5 @@
 export 'package:common_utils/common_utils.dart';
 
-/// 屏幕
-export 'package:flutter_screenutil/screen_util.dart';
-
 /// 图片加载
 export 'package:extended_image/extended_image.dart';
 
@@ -30,6 +27,14 @@ export 'package:flutter_swiper/flutter_swiper.dart';
 
 //
 export 'package:transparent_image/transparent_image.dart';
+
+// 角标分类
+export 'third/azlistview/azlistview.dart';
+
+// 汉字转拼音
+export 'package:lpinyin/lpinyin.dart';
+
+export 'package:english_words/english_words.dart';
 
 // 设置手机权限 第三方库
 //export 'package:permission_handler/permission_handler.dart';

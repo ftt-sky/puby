@@ -1,5 +1,5 @@
 import 'package:puby/third_page.dart';
-
+import 'package:flutter/material.dart';
 import 'package:puby/puby_page.dart';
 import 'package:puby/commen/common_index.dart';
 // import 'package:url_launcher/url_launcher.dart';
@@ -25,6 +25,28 @@ class Utils {
     } else {
       return false;
     }
+  }
+
+  static Widget getSusItem(BuildContext context, String tag,
+      {double susHeight = 40}) {
+    if (tag == '★') {
+      tag = '★ 热门城市';
+    }
+    return Container(
+      height: susHeight,
+      width: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.only(left: 16.0),
+      color: Color(0xFFF3F4F5),
+      alignment: Alignment.centerLeft,
+      child: Text(
+        '$tag',
+        softWrap: false,
+        style: TextStyle(
+          fontSize: 14.0,
+          color: Color(0xFF666666),
+        ),
+      ),
+    );
   }
 }
 

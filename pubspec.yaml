@@ -19,6 +19,8 @@ version: 1.0.0+1
 
 environment:
   sdk: ">=2.6.0 <3.0.0"
+# environment:
+#   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -66,6 +68,13 @@ dependencies:
   flutter_webview_plugin: ^0.3.10+2
 
   transparent_image: ^1.0.0
+  # 汉字转拼音
+  lpinyin: ^2.0.3
+
+  english_words: ^4.0.0
+
+  # 滚动指定的位置
+  scrollable_positioned_list: ^0.1.10
   # 获取手机权限
   #permission_handler: ^8.0.1
   # 打电话 
@@ -129,6 +138,10 @@ flutter:
     - assets/images/pingtaidingdan.png
     - assets/images/xueyuan.png
     - assets/images/xiaoxi.png
+    - assets/images/yiyaoxiang.png
+    - assets/images/cangshang.png
+    - assets/images/gyingshang.png
+    - assets/images/yaocaileixing.png
     - assets/json/empty.json
     - assets/json/disconnect.json
     - assets/json/error.json
@@ -138,6 +151,7 @@ flutter:
     - assets/json/error2.json
     - assets/json/empty2.json
     - assets/json/empty3.json
+    - assets/json/china.json
     - assets/images/animationImage.gif
 
 

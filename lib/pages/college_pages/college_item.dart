@@ -184,8 +184,8 @@ Widget buildCollegeItemGridViewItem(BuildContext context) {
               style: TextStyleMacor.nor12col333,
             ),
             Gaps.vGap5,
-            Expanded(child: child)
-            Row(
+            Expanded(
+                child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
@@ -197,7 +197,7 @@ Widget buildCollegeItemGridViewItem(BuildContext context) {
                   style: TextStyleMacor.nor14col666,
                 )
               ],
-            )
+            ))
           ],
         ),
       ));

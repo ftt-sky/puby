@@ -45,7 +45,7 @@ class PurchasePageState extends State<PurchasePage> {
       child: Column(
         children: [
           buildworkbenchBanner(CurrentData.currentImage),
-          buildSearchWidget(),
+          // buildSearchWidget(),
           Gaps.vGap10,
           buildListRefresh()
         ],
