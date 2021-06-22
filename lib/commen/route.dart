@@ -71,6 +71,15 @@ class RouteManager {
       case PageIdMacro.purchaseitemId:
         return PurchaseItemDetailPage();
         break;
+      case PageIdMacro.purchaseaddress:
+        return PurchaseAddressPage(data: data);
+        break;
+      case PageIdMacro.purchaseadresslist:
+        return PurchaseAddressListPage();
+        break;
+      case PageIdMacro.purchaseaddressnewpage:
+        return PurchaseaddressnewPage();
+        break;
       case PageIdMacro.myId:
         return MyPage();
         break;
@@ -115,5 +124,59 @@ class RouteManager {
         return App();
         break;
     }
+  }
+}
+
+class TTPopRoute<T> extends PopupRoute<T> {
+  final Duration _duration = Duration(microseconds: 300);
+  final double barrierOpacity;
+  Widget child;
+
+  TTPopRoute({@required this.child, this.barrierOpacity = 0.5});
+
+  @override
+  Duration get transitionDuration => _duration;
+
+  @override
+  Color get barrierColor => Color.fromRGBO(0, 0, 0, barrierOpacity);
+
+  @override
+  bool get barrierDismissible => true;
+
+  @override
+  String get barrierLabel => null;
+
+  AnimationController _animationController;
+  @override
+  AnimationController createAnimationController() {
+    assert(_animationController == null);
+    _animationController =
+        BottomSheet.createAnimationController(navigator.overlay);
+    return _animationController;
+  }
+
+  @override
+  Widget buildPage(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation) {
+    Widget bottomSheet = MediaQuery.removePadding(
+        context: context,
+        child: InheritRouteWidget(router: this, child: child));
+    return bottomSheet;
+  }
+}
+
+class InheritRouteWidget extends InheritedWidget {
+  final TTPopRoute router;
+
+  InheritRouteWidget({Key key, @required this.router, @required Widget child})
+      : super(key: key, child: child);
+
+  static InheritRouteWidget of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType();
+  }
+
+  @override
+  bool updateShouldNotify(InheritRouteWidget oldWidget) {
+    return oldWidget.router != router;
   }
 }

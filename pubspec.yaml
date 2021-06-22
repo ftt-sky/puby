@@ -142,6 +142,11 @@ flutter:
     - assets/images/cangshang.png
     - assets/images/gyingshang.png
     - assets/images/yaocaileixing.png
+    - assets/images/yaopinweixuanzhong.png
+    - assets/images/yaopinxuanzhong.png
+    - assets/images/gouwuche.png
+    - assets/images/bianxie.png
+    - assets/images/yuan.png
     - assets/json/empty.json
     - assets/json/disconnect.json
     - assets/json/error.json

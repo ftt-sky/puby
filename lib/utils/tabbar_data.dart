@@ -25,8 +25,9 @@ class CurrentData {
   static Color lvColors = Color(0xFF39c49a);
 
   // 通用间隔
-  Widget configlineSpace({double height = 1}) {
-    return Container(height: height, color: ColorsMacro.col_F7F);
+  Widget configlineSpace(
+      {double height = 1, Color color = ColorsMacro.col_F7F}) {
+    return Container(height: height, color: color);
   }
 
   // 药材类型
@@ -300,6 +301,39 @@ class ImageIconMacro {
   // 药材类型
   static Image yaocaileixingImage =
       configminImage(Utils.getImagePath(ImageStringMacro.yaocaileixingStr));
+  // 药品选中
+  static Image yaopinxuanzhongImage = Image.asset(
+      Utils.getImagePath(ImageStringMacro.yaopinxuanzhongStr),
+      width: 20,
+      height: 20);
+  // 购物车
+  static Image gouwucheImage =
+      configminImage(Utils.getImagePath(ImageStringMacro.gouwucheStr));
+  // 药品未选中
+  static Image yaopinweixuanzhongImage = Image.asset(
+    Utils.getImagePath(ImageStringMacro.yaopinweixuanzhongStr),
+    width: 20,
+    height: 20,
+  );
+
+  // 编写
+  static Image bianxieimage = Image.asset(
+    Utils.getImagePath(ImageStringMacro.bianxieStr),
+    width: 14,
+    height: 14,
+  );
+  // 空心圆
+  static Image yuanimage = Image.asset(
+    Utils.getImagePath(ImageStringMacro.yuanStr),
+    width: 14,
+    height: 14,
+  );
+  // 灰色空心圆
+  static Image huiseyuanimage = Image.asset(
+    Utils.getImagePath(ImageStringMacro.weixuanzhongStr),
+    width: 14,
+    height: 14,
+  );
 
   // 提交成功
   static Image tijiaochenggongimage = Image.asset(

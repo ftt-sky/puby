@@ -426,10 +426,20 @@ Widget configOrangeAppBar(String name) {
 class NumselectWidget extends StatefulWidget {
   double w;
   double h;
-  int type = 0;
-  double jishu = 1.0;
+  int type;
+  double jishu;
+  String selectnumstr;
+  bool istextfiled;
   Function(String value) onChanged;
-  NumselectWidget({this.w, this.h, this.type, this.jishu, this.onChanged});
+  Function(String value) onTapnum;
+  NumselectWidget(
+      {this.w,
+      this.h,
+      this.type = 0,
+      this.selectnumstr = '0',
+      this.jishu = 1.0,
+      this.istextfiled = false,
+      this.onChanged});
   @override
   State<StatefulWidget> createState() {
     return _NumselectWidgetState();
@@ -437,10 +447,21 @@ class NumselectWidget extends StatefulWidget {
 }
 
 class _NumselectWidgetState extends State<NumselectWidget> {
-  int selectnum = 0;
-  String selectnumstr = '0';
+  double selectnum;
+
+  String tf = '0';
+  TextEditingController _textEditingController;
+
+  @override
+  void initState() {
+    super.initState();
+    _textEditingController = TextEditingController();
+  }
+
   @override
   Widget build(BuildContext context) {
+    _textEditingController.text = widget.selectnumstr;
+    selectnum = double.parse(widget.selectnumstr) / widget.jishu;
     return Container(
       width: widget.w,
       height: widget.h,
@@ -455,10 +476,42 @@ class _NumselectWidgetState extends State<NumselectWidget> {
                 },
                 child: ImageIconMacro.jianimage),
           ),
-          Text(
-            selectnumstr,
-            style: TextStyleMacor.nor14col333,
-          ),
+          widget.istextfiled
+              ? Container(
+                  width: widget.w - 80,
+                  child: TextField(
+                      keyboardType: TextInputType.numberWithOptions(),
+                      textAlign: TextAlign.center,
+                      onEditingComplete: () {
+                        SystemChannels.textInput.invokeMethod("TextInput.hide");
+                      },
+                      onChanged: (value) {
+                        tf = value;
+                        selectnum = 0;
+                        widget.selectnumstr = value;
+                        setState(() {});
+                      },
+                      controller: _textEditingController,
+                      style: TextStyleMacor.nor14col333,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.fromLTRB(-2, 0, 0, 0),
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: InputBorder.none,
+                        hintText: widget.selectnumstr,
+                        hintStyle: TextStyleMacor.nor14col333,
+                      )))
+              : GestureDetector(
+                  onTap: () {
+                    if (widget.onTapnum != null) {
+                      widget.onTapnum(widget.selectnumstr);
+                    }
+                  },
+                  child: Text(
+                    widget.selectnumstr,
+                    style: TextStyleMacor.nor14col333,
+                  ),
+                ),
           Container(
             width: 40,
             child: TextButton(
@@ -483,7 +536,48 @@ class _NumselectWidgetState extends State<NumselectWidget> {
       selectnum++;
     }
     double num = selectnum * widget.jishu;
-    selectnumstr = '$num';
+    if (widget.istextfiled) {
+      double tfnum = double.parse(tf) + num;
+      widget.selectnumstr = '$tfnum';
+    } else {
+      widget.selectnumstr = '$num';
+    }
+    if (widget.onChanged != null) {
+      widget.onChanged(widget.selectnumstr);
+    }
     setState(() {});
+  }
+}
+
+class WrapLayout extends SingleChildLayoutDelegate {
+  WrapLayout({
+    @required this.progress,
+    @required this.height,
+  });
+
+  final double progress;
+  final double height;
+
+  @override
+  BoxConstraints getConstraintsForChild(BoxConstraints constraints) {
+    double maxHeight = height;
+
+    return new BoxConstraints(
+      minWidth: constraints.maxWidth,
+      maxWidth: constraints.maxWidth,
+      minHeight: 0.0,
+      maxHeight: maxHeight,
+    );
+  }
+
+  @override
+  Offset getPositionForChild(Size size, Size childSize) {
+    double height = size.height - childSize.height * progress;
+    return new Offset(0.0, height);
+  }
+
+  @override
+  bool shouldRelayout(WrapLayout oldDelegate) {
+    return progress != oldDelegate.progress;
   }
 }

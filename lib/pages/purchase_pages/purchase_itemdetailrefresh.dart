@@ -1,9 +1,9 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:puby/models/model_index.dart';
 import 'package:puby/puby_page.dart';
 import 'purchase_itemcurrentwidget.dart';
+import 'purchase_selectPage.dart';
+import 'purchase_choicePage.dart';
 
 class PurchaseItemDetailRefresh extends StatefulWidget {
   @override
@@ -21,7 +21,10 @@ class _PurchaseItemDetailRefreshState extends State<PurchaseItemDetailRefresh> {
   IndexBarDragListener dragListener = IndexBarDragListener.create();
   List<PurchaseItemModel> data = [];
   List<Map> _subList = [];
+  // 选中的药品模型
+  List<PurchaseItemModel> selectdata = [];
   final _suggestions = <WordPair>[];
+
   int page = 1;
 
   @override
@@ -138,6 +141,35 @@ class _PurchaseItemDetailRefreshState extends State<PurchaseItemDetailRefresh> {
     return {'sub': -1, 'index': -1};
   }
 
+  // 点击查看显示 购物车
+  void configtapchakan() {
+    Navigator.of(context, rootNavigator: true).push(TTPopRoute(
+        child: PurchaseSelectPage(
+      data: selectdata,
+      onReload: () {
+        setState(() {});
+      },
+    )));
+  }
+
+  // 显示选择框
+  void configchoice(PurchaseItemModel model) {
+    Navigator.of(context, rootNavigator: true).push(TTPopRoute(
+        child: PurchaseChoicePage(
+            model: model,
+            onReload: () {
+              if (model.num == '0.0') {
+                selectdata.remove(model);
+              } else {
+                selectdata.removeWhere((element) {
+                  return element == model;
+                });
+                selectdata.add(model);
+              }
+              setState(() {});
+            })));
+  }
+
   @override
   Widget build(BuildContext context) {
     return _buildScaff();
@@ -147,14 +179,17 @@ class _PurchaseItemDetailRefreshState extends State<PurchaseItemDetailRefresh> {
     return Container(
       child: Column(
         children: [
-          Container(
-            padding: EdgeInsets.all(10),
-            height: 120,
-            width: SizeMacro().screenWidth,
-            child: PurchaseItemsShuaixuan(),
+          SizedBox(
+            height: Dimens.dp10,
+            child: Container(
+              color: ColorsMacro.col_F7F,
+            ),
           ),
+          PurchaseItemsShuaixuan(),
           _buildStack(),
-          purchaseItemChakan()
+          purchaseItemChakan(selectdata, '查看', onTapblock: () {
+            configtapchakan();
+          })
         ],
       ),
     );
@@ -240,11 +275,29 @@ class _PurchaseItemDetailRefreshState extends State<PurchaseItemDetailRefresh> {
               ],
             ),
           ),
-          // Container(
-          //   width: 100,
-          // child:
-          NumselectWidget(w: 100, h: 75, type: 0, onChanged: (e) {}),
-          // )
+          IconButton(
+              icon: ImageIconMacro.gouwucheImage,
+              onPressed: () {
+                configchoice(model);
+              })
+          // NumselectWidget(
+          //     w: 120,
+          //     h: 75,
+          //     type: 0,
+          //     jishu: model.price,
+          //     selectnumstr: model.num,
+          //     onChanged: (e) {
+          //       if (e == '0.0') {
+          //         selectdata.remove(model);
+          //       } else {
+          //         model.num = e;
+          //         selectdata.removeWhere((element) {
+          //           return element == model;
+          //         });
+          //         selectdata.add(model);
+          //       }
+          //       setState(() {});
+          //     }),
         ],
       ),
     );

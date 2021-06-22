@@ -103,6 +103,16 @@ class ImageStringMacro {
   static const String cangshangStr = 'cangshang';
   // 药材类型
   static const String yaocaileixingStr = 'yaocaileixing';
+  // 药品选中
+  static const String yaopinxuanzhongStr = 'yaopinxuanzhong';
+  // 药品未选中
+  static const String yaopinweixuanzhongStr = 'yaopinweixuanzhong';
+  // 购物车
+  static const String gouwucheStr = 'gouwuche';
+  // 编写
+  static const String bianxieStr = 'bianxie';
+  // 空心圆
+  static const String yuanStr = 'yuan';
 }
 
 // 界面标识
@@ -130,6 +140,12 @@ class PageIdMacro {
   static const String purchaseId = '/purchase';
   // 采购详情
   static const String purchaseitemId = '/purchaseitem';
+  // 采购配送信息
+  static const String purchaseaddress = '/purchaseaddress';
+  // 收货地址
+  static const String purchaseadresslist = '/purchaseaddresslist';
+  // 新增收货地址
+  static const String purchaseaddressnewpage = '/purchaseaddressnew';
 
   // 个人中心
   static const String myId = '/my';
