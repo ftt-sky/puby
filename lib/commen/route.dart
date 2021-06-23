@@ -80,6 +80,9 @@ class RouteManager {
       case PageIdMacro.purchaseaddressnewpage:
         return PurchaseaddressnewPage();
         break;
+      case PageIdMacro.purchasedetail:
+        return PurchaseDetailPage();
+        break;
       case PageIdMacro.myId:
         return MyPage();
         break;

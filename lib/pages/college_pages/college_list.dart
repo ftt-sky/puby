@@ -61,7 +61,10 @@ class CollegeListWidgetState extends State<CollegeListWidget> {
         child: Column(
           children: [
             Gaps.vGap10,
-            buildlistSearch(),
+            CurrentSearchPage(
+              hintText: widget.name == '我的收藏' ? '请输入搜索内容/关键字' : '请输入名称/联系人/手机号',
+              onSearch: (e) {},
+            ),
             Gaps.vGap5,
             CurrentData().configlineSpace(),
             Expanded(
@@ -85,7 +88,11 @@ class CollegeListWidgetState extends State<CollegeListWidget> {
           Container(
               width: SizeMacro().screenWidth - 80,
               height: 36,
-              child: buildSearchTextField()),
+              child: CurrentSearchPage(
+                hintText:
+                    widget.name == '我的收藏' ? '请输入搜索内容/关键字' : '请输入名称/联系人/手机号',
+                onSearch: (e) {},
+              )),
           buildSearchSureBtn()
         ],
       ),

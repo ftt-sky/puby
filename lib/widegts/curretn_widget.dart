@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/screen_util.dart';
 import 'package:lottie/lottie.dart';
 import 'package:puby/puby_page.dart';
 
@@ -338,10 +339,10 @@ Future<bool> configcallphonepermission(BuildContext context) async {
 
 // ignore: must_be_immutable
 class CurrentSearchPage extends StatelessWidget {
-  final String name;
+  final String hintText;
   Function(String value) onSearch;
   String searchtext;
-  CurrentSearchPage(this.name, this.onSearch);
+  CurrentSearchPage({this.hintText, this.onSearch});
 
   @override
   Widget build(BuildContext context) {
@@ -390,7 +391,8 @@ class CurrentSearchPage extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: ColorsMacro.col_EEE, width: 1),
               borderRadius: BorderRadius.all(Radius.circular(5))),
-          hintText: name == '我的收藏' ? '请输入搜索内容/关键字' : '请输入名称/联系人/手机号',
+          hintText: hintText,
+          // name == '我的收藏' ? '请输入搜索内容/关键字' : '请输入名称/联系人/手机号',
           hintStyle: TextStyleMacor.nor14col666,
           focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: ColorsMacro.col_EEE, width: 1),
@@ -412,6 +414,7 @@ class CurrentSearchPage extends StatelessWidget {
 // 配置橘黄色导航栏
 Widget configOrangeAppBar(String name) {
   return AppBar(
+    elevation: 0,
     backgroundColor: Colors.orange,
     leading: BackButton(color: ColorsMacro.col_FFF),
     title: Text(
@@ -580,4 +583,29 @@ class WrapLayout extends SingleChildLayoutDelegate {
   bool shouldRelayout(WrapLayout oldDelegate) {
     return progress != oldDelegate.progress;
   }
+}
+
+// 创建地址按钮
+Widget configbuildbottomBtn({String name, VoidCallback onPressed}) {
+  return Positioned(
+      bottom: ScreenUtil().bottomBarHeight,
+      child: Container(
+        width: SizeMacro().screenWidth,
+        height: 50,
+        child: TextButton(
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.orange),
+              side: MaterialStateProperty.all(
+                  BorderSide(color: Colors.orange, width: 1))),
+          onPressed: () {
+            if (onPressed != null) {
+              onPressed();
+            }
+          },
+          child: Text(
+            name,
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
+        ),
+      ));
 }

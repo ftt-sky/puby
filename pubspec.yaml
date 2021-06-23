@@ -75,6 +75,11 @@ dependencies:
 
   # 滚动指定的位置
   scrollable_positioned_list: ^0.1.10
+
+  #flutter 选择器库，包括日期及时间选择器（可设置范围）、
+  #单项选择器（可用于性别、民族、学历、星座、年龄、身高、体重、温度等）、
+  #城市地址选择器（分省级、地级及县级）、
+  flutter_pickers: ^2.1.1
   # 获取手机权限
   #permission_handler: ^8.0.1
   # 打电话 

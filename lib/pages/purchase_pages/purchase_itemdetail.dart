@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:puby/pages/purchase_pages/purchase_itemdetailrefresh.dart';
+import 'package:puby/pages/purchase_pages/purchase_shouhuoPage.dart';
+import 'package:puby/puby_page.dart';
 import 'package:puby/utils/commen_uitils.dart';
 import 'package:puby/widegts/curretn_widget.dart';
+import 'purchase_histPage.dart';
 
 // ignore: must_be_immutable
 class PurchaseItemDetailPage extends StatefulWidget {
@@ -36,7 +39,11 @@ class _PurchaseItemDetailPageState extends State<PurchaseItemDetailPage>
     return Container(
       color: Colors.white,
       child: Column(
-        children: [_buildDetailTabBarWidget(), _buildDetailTabViewWidget()],
+        children: [
+          _buildDetailTabBarWidget(),
+          CurrentData().configlineSpace(height: 1),
+          _buildDetailTabViewWidget()
+        ],
       ),
     );
   }
@@ -81,8 +88,8 @@ class _PurchaseItemDetailPageState extends State<PurchaseItemDetailPage>
       controller: _controller,
       children: [
         PurchaseItemDetailRefresh(),
-        NumselectWidget(w: 200, h: 40, type: 1, jishu: 150, onChanged: (e) {}),
-        Container()
+        PurchaseHistPage(),
+        PurchaseShouhuoPage()
       ],
     ));
   }

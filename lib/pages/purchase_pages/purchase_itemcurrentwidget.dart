@@ -176,14 +176,14 @@ class _PurchaseItemsShuaixuanState extends State<PurchaseItemsShuaixuan> {
         child: DropdownButton(
       value: svalue,
       underline: new Container(),
-      selectedItemBuilder: (context) {
-        return list
-            .map((e) => Text(e,
-                style: TextStyle(color: CurrentData.thereColors, fontSize: 13)))
-            .toList();
-      },
       items: list.map((e) {
-        return DropdownMenuItem(child: Text(e), value: e);
+        return DropdownMenuItem(
+            child: Text(
+              e,
+              style: TextStyle(
+                  color: e == svalue ? Colors.orange : ColorsMacro.col_333),
+            ),
+            value: e);
       }).toList(),
       onChanged: (value) {
         setState(() {
@@ -316,6 +316,61 @@ Widget configaddressItem({
                   style: TextStyleMacor.nor14col333,
                 )
               ]))
+      ],
+    ),
+  );
+}
+
+// 创建筛选
+Widget createslisihaixuanWidget({GestureTapCallback onTap}) {
+  return GestureDetector(
+      onTap: () {
+        if (onTap != null) {
+          onTap();
+        }
+      },
+      child: Container(
+        height: 40,
+        padding: EdgeInsets.only(left: 10),
+        child: Row(
+          children: [
+            Text(
+              '采购历史筛选',
+              style: TextStyle(
+                color: CurrentData.thereColors,
+                fontSize: 14,
+              ),
+            ),
+            Gaps.hGap5,
+            Icon(Icons.arrow_drop_down),
+          ],
+        ),
+      ));
+}
+
+// 创建采购历史标题
+Widget createhistTipWidget({int type = 0}) {
+  return Container(
+    height: 36,
+    padding: EdgeInsets.only(left: 10, right: 10),
+    color: Color.fromRGBO(253, 250, 240, 1),
+    child: Row(
+      children: [
+        Expanded(
+            flex: 2,
+            child: Text(
+              '采购日期',
+              style: TextStyleMacor.nor14col333,
+            )),
+        Expanded(
+            flex: 1, child: Text('总金额', style: TextStyleMacor.nor14col333)),
+        Expanded(
+            flex: 1,
+            child: Text(
+              '操作',
+              style: TextStyleMacor.nor14col333,
+              textAlign: type == 0 ? TextAlign.left : TextAlign.right,
+            )),
       ],
     ),
   );

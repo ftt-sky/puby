@@ -4,3 +4,5 @@ export 'purchase_itemdetail.dart';
 export 'purchase_addressPage.dart';
 export 'purchase_addresslistPage.dart';
 export 'purchase_addressnewPage.dart';
+
+export 'purchase_detailPage.dart';

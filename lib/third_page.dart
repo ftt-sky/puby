@@ -35,6 +35,8 @@ export 'third/azlistview/azlistview.dart';
 export 'package:lpinyin/lpinyin.dart';
 
 export 'package:english_words/english_words.dart';
+// 选择器
+export 'package:flutter_pickers/pickers.dart';
 
 // 设置手机权限 第三方库
 //export 'package:permission_handler/permission_handler.dart';

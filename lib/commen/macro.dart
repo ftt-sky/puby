@@ -146,6 +146,8 @@ class PageIdMacro {
   static const String purchaseadresslist = '/purchaseaddresslist';
   // 新增收货地址
   static const String purchaseaddressnewpage = '/purchaseaddressnew';
+  // 购物详情
+  static const String purchasedetail = '/purchasedetail';
 
   // 个人中心
   static const String myId = '/my';
