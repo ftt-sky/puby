@@ -588,24 +588,30 @@ class WrapLayout extends SingleChildLayoutDelegate {
 // 创建地址按钮
 Widget configbuildbottomBtn({String name, VoidCallback onPressed}) {
   return Positioned(
-      bottom: ScreenUtil().bottomBarHeight,
+      bottom: 0,
       child: Container(
-        width: SizeMacro().screenWidth,
-        height: 50,
-        child: TextButton(
-          style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.orange),
-              side: MaterialStateProperty.all(
-                  BorderSide(color: Colors.orange, width: 1))),
-          onPressed: () {
-            if (onPressed != null) {
-              onPressed();
-            }
-          },
-          child: Text(
-            name,
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
-        ),
-      ));
+          color: Colors.white,
+          width: SizeMacro().screenWidth,
+          height: 50 + ScreenUtil().bottomBarHeight,
+          child: Column(children: [
+            Container(
+              width: SizeMacro().screenWidth,
+              height: 50,
+              child: TextButton(
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.orange),
+                    side: MaterialStateProperty.all(
+                        BorderSide(color: Colors.orange, width: 1))),
+                onPressed: () {
+                  if (onPressed != null) {
+                    onPressed();
+                  }
+                },
+                child: Text(
+                  name,
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+              ),
+            )
+          ])));
 }

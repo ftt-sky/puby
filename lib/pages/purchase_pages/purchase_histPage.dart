@@ -14,6 +14,7 @@ class PurchaseHistPage extends StatefulWidget {
 class _PurchaseHistPageState extends State<PurchaseHistPage> {
   RefreshController refreshController;
   ScrollController scrollController;
+  String searchname;
 
   /// 生命周期
   ///
@@ -60,7 +61,11 @@ class _PurchaseHistPageState extends State<PurchaseHistPage> {
         height: 56,
         child: CurrentSearchPage(
           hintText: '请输入订单编号',
-          onSearch: (e) {},
+          onSearch: (e) {
+            searchname = e;
+            setState(() {});
+            refreshController.requestRefresh();
+          },
         ));
   }
 
@@ -75,6 +80,7 @@ class _PurchaseHistPageState extends State<PurchaseHistPage> {
         child: PurchaseHistRefreshPage(
       scrollController: scrollController,
       refreshController: refreshController,
+      name: searchname,
     ));
   }
 

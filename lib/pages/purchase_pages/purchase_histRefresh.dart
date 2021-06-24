@@ -8,8 +8,12 @@ class PurchaseHistRefreshPage extends StatefulWidget {
   RefreshController refreshController;
   ScrollController scrollController;
   int type;
+  String name;
   PurchaseHistRefreshPage(
-      {this.type = 0, this.refreshController, this.scrollController});
+      {this.type = 0,
+      this.refreshController,
+      this.scrollController,
+      this.name});
   @override
   State<StatefulWidget> createState() {
     return _PurchaseHistRefreshPageState();

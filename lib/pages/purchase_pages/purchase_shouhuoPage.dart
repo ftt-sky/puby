@@ -17,6 +17,7 @@ class _PurchaseShouhuoPageState extends State<PurchaseShouhuoPage> {
   List<String> typeList = ['待收货采购单', '已收货采购单'];
   RefreshController refreshController;
   ScrollController scrollController;
+  String searchname;
 
   ///生命周期
   ///
@@ -62,7 +63,12 @@ class _PurchaseShouhuoPageState extends State<PurchaseShouhuoPage> {
         height: 56,
         child: CurrentSearchPage(
           hintText: '请输入订单编号',
-          onSearch: (e) {},
+          onSearch: (e) {
+            setState(() {
+              searchname = e;
+            });
+            refreshController.requestRefresh();
+          },
         ));
   }
 
